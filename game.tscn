@@ -1,0 +1,127 @@
+[gd_scene load_steps=14 format=3 uid="uid://djoarhxcpiku8"]
+
+[ext_resource type="Script" path="res://Camera2D.gd" id="1_kca2i"]
+[ext_resource type="PackedScene" uid="uid://bs7q345gwb5ja" path="res://player.tscn" id="1_uebi4"]
+[ext_resource type="PackedScene" uid="uid://c7g50w2bttn5u" path="res://shark.tscn" id="2_ob4dp"]
+[ext_resource type="PackedScene" uid="uid://bbb44rsgvr3wc" path="res://enemy_spawner.tscn" id="3_o6ym5"]
+[ext_resource type="PackedScene" uid="uid://bme5e7dm8o0hq" path="res://person_ui.tscn" id="5_micwc"]
+[ext_resource type="Texture2D" uid="uid://dca64etbsfeib" path="res://particles/bubble.png" id="6_ip3m5"]
+[ext_resource type="Texture2D" uid="uid://yjipdjcp0ssv" path="res://user_interface/oxygen-bar/oxygen_bar_under.png" id="6_ttum1"]
+[ext_resource type="Texture2D" uid="uid://fprudh50ipsm" path="res://user_interface/oxygen-bar/oxygen_bar_progress.png" id="7_nwxs3"]
+[ext_resource type="Script" path="res://oxygenBar.gd" id="8_87ia2"]
+[ext_resource type="FontFile" uid="uid://b0k28w0xuxdac" path="res://user_interface/fonts/font_1.ttf" id="9_xmbcm"]
+[ext_resource type="Texture2D" uid="uid://db6l22yt8e5yf" path="res://user_interface/bg.png" id="10_pynhp"]
+[ext_resource type="PackedScene" uid="uid://bjskspmn3crka" path="res://oxygen_refill.tscn" id="12_dphwu"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tkncq"]
+lifetime_randomness = 0.15
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(125, 1, 0)
+angle_max = 120.0
+spread = 77.36
+angular_velocity_min = -10.0
+angular_velocity_max = 10.0
+gravity = Vector3(0, -8, 0)
+
+[node name="game" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+position_smoothing_enabled = true
+script = ExtResource("1_kca2i")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="personUI" parent="UI" instance=ExtResource("5_micwc")]
+
+[node name="oxygenBar" type="TextureProgressBar" parent="UI"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = 44.0
+offset_right = 86.0
+offset_bottom = 52.0
+grow_vertical = 2
+rotation = -1.5708
+mouse_filter = 2
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_right = 4
+texture_under = ExtResource("6_ttum1")
+texture_progress = ExtResource("7_nwxs3")
+script = ExtResource("8_87ia2")
+
+[node name="Label" type="Label" parent="UI/oxygenBar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -23.0
+offset_right = 43.0
+grow_vertical = 2
+rotation = 1.5708
+theme_override_colors/font_outline_color = Color(0.12549, 0.0823529, 0.2, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("9_xmbcm")
+theme_override_font_sizes/font_size = 8
+text = "O"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="UI/oxygenBar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 10.0
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_outline_color = Color(0.12549, 0.0823529, 0.2, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("9_xmbcm")
+theme_override_font_sizes/font_size = 8
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="player" parent="." instance=ExtResource("1_uebi4")]
+unique_name_in_owner = true
+position = Vector2(126, 65)
+
+[node name="shark" parent="." instance=ExtResource("2_ob4dp")]
+position = Vector2(24, 110)
+
+[node name="enemySpawner" parent="." instance=ExtResource("3_o6ym5")]
+position = Vector2(0, 50)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(131, 156)
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_tkncq")
+texture = ExtResource("6_ip3m5")
+lifetime = 8.0
+explosiveness = 0.27
+randomness = 0.3
+fixed_fps = 20
+
+[node name="BG" type="TextureRect" parent="."]
+show_behind_parent = true
+z_index = -6
+offset_right = 256.0
+offset_bottom = 256.0
+texture = ExtResource("10_pynhp")
+metadata/_edit_lock_ = true
+
+[node name="oxygen_refill" parent="BG" groups=["oxygen_area"] instance=ExtResource("12_dphwu")]
+position = Vector2(3, 4)
+metadata/_edit_lock_ = true
+
+[connection signal="area_shape_entered" from="player" to="player" method="_on_area_shape_entered"]
+[connection signal="area_entered" from="BG/oxygen_refill" to="BG/oxygen_refill" method="_on_area_entered"]

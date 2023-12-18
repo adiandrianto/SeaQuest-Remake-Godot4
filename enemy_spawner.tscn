@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbb44rsgvr3wc"]
+
+[ext_resource type="Script" path="res://enemy_spawner.gd" id="1_2mfur"]
+
+[node name="enemySpawner" type="Node2D"]
+script = ExtResource("1_2mfur")
+
+[node name="left" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="1" type="Marker2D" parent="left"]
+position = Vector2(-20, 25)
+
+[node name="2" type="Marker2D" parent="left"]
+position = Vector2(-20, 60)
+
+[node name="3" type="Marker2D" parent="left"]
+position = Vector2(-20, 95)
+
+[node name="4" type="Marker2D" parent="left"]
+position = Vector2(-20, 130)
+
+[node name="right" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="1" type="Marker2D" parent="right"]
+position = Vector2(276, 25)
+
+[node name="2" type="Marker2D" parent="right"]
+position = Vector2(276, 60)
+
+[node name="3" type="Marker2D" parent="right"]
+position = Vector2(276, 95)
+
+[node name="4" type="Marker2D" parent="right"]
+position = Vector2(276, 130)
+
+[node name="spawnTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="personTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="spawnTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="personTimer" to="." method="_on_person_timer_timeout"]

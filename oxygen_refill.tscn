@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjskspmn3crka"]
+
+[ext_resource type="Script" path="res://oxygen_refill.gd" id="1_jiet8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4qwe"]
+size = Vector2(274, 37)
+
+[node name="oxygen_refill" type="Area2D"]
+script = ExtResource("1_jiet8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(126, 17)
+shape = SubResource("RectangleShape2D_l4qwe")

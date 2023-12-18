@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://bme5e7dm8o0hq"]
+
+[ext_resource type="Script" path="res://ui.gd" id="1_bglgm"]
+[ext_resource type="Texture2D" uid="uid://ceuk8nvkvnqlm" path="res://user_interface/people-count/person_empty_ui.png" id="2_byqk4"]
+
+[node name="personUI" type="Node2D"]
+
+[node name="UI1" type="Node2D" parent="."]
+script = ExtResource("1_bglgm")
+
+[node name="Sprite1" type="Sprite2D" parent="UI1"]
+position = Vector2(7, 8)
+texture = ExtResource("2_byqk4")
+hframes = 2
+
+[node name="UI2" type="Node2D" parent="."]
+script = ExtResource("1_bglgm")
+ui_order = 2
+
+[node name="Sprite2" type="Sprite2D" parent="UI2"]
+position = Vector2(7, 8)
+texture = ExtResource("2_byqk4")
+offset = Vector2(12, 0)
+hframes = 2
+
+[node name="UI3" type="Node2D" parent="."]
+script = ExtResource("1_bglgm")
+ui_order = 3
+
+[node name="Sprite3" type="Sprite2D" parent="UI3"]
+position = Vector2(7, 8)
+texture = ExtResource("2_byqk4")
+offset = Vector2(24, 0)
+hframes = 2
+
+[node name="UI4" type="Node2D" parent="."]
+script = ExtResource("1_bglgm")
+ui_order = 4
+
+[node name="Sprite4" type="Sprite2D" parent="UI4"]
+position = Vector2(7, 8)
+texture = ExtResource("2_byqk4")
+offset = Vector2(36, 0)
+hframes = 2
+
+[node name="UI5" type="Node2D" parent="."]
+script = ExtResource("1_bglgm")
+ui_order = 5
+
+[node name="Sprite5" type="Sprite2D" parent="UI5"]
+position = Vector2(7, 8)
+texture = ExtResource("2_byqk4")
+offset = Vector2(48, 0)
+hframes = 2
+
+[node name="UI6" type="Node2D" parent="."]
+script = ExtResource("1_bglgm")
+ui_order = 6
+
+[node name="Sprite6" type="Sprite2D" parent="UI6"]
+position = Vector2(7, 8)
+texture = ExtResource("2_byqk4")
+offset = Vector2(60, 0)
+hframes = 2
+
+[node name="UI7" type="Node2D" parent="."]
+script = ExtResource("1_bglgm")
+ui_order = 7
+
+[node name="Sprite7" type="Sprite2D" parent="UI7"]
+position = Vector2(7, 8)
+texture = ExtResource("2_byqk4")
+offset = Vector2(72, 0)
+hframes = 2

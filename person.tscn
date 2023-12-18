@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddbvvh46ep0f0"]
+
+[ext_resource type="Script" path="res://person.gd" id="1_2bbmc"]
+[ext_resource type="Texture2D" uid="uid://sxrhmabo8fs" path="res://person/person_swimming.png" id="2_fsity"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_th5ut"]
+atlas = ExtResource("2_fsity")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c2ee"]
+atlas = ExtResource("2_fsity")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6eliy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_th5ut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7c2ee")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghk2w"]
+size = Vector2(14, 8)
+
+[node name="person" type="Area2D"]
+script = ExtResource("1_2bbmc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_6eliy")
+autoplay = "default"
+frame_progress = 0.535406
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_ghk2w")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
