@@ -59,8 +59,9 @@ one_shot = true
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_j5dj7")
 
-[node name="personUnloadTimer" type="Timer" parent="."]
-wait_time = 0.7
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.2
+one_shot = true
 
 [connection signal="timeout" from="reloadTimer" to="." method="_on_reload_timer_timeout"]
-[connection signal="timeout" from="personUnloadTimer" to="." method="_on_person_unload_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

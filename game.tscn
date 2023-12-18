@@ -1,15 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://djoarhxcpiku8"]
+[gd_scene load_steps=13 format=3 uid="uid://djoarhxcpiku8"]
 
 [ext_resource type="Script" path="res://Camera2D.gd" id="1_kca2i"]
 [ext_resource type="PackedScene" uid="uid://bs7q345gwb5ja" path="res://player.tscn" id="1_uebi4"]
 [ext_resource type="PackedScene" uid="uid://c7g50w2bttn5u" path="res://shark.tscn" id="2_ob4dp"]
+[ext_resource type="PackedScene" uid="uid://ccwwauisc46lk" path="res://scenes/oxygen_bar.tscn" id="3_2akx3"]
 [ext_resource type="PackedScene" uid="uid://bbb44rsgvr3wc" path="res://enemy_spawner.tscn" id="3_o6ym5"]
+[ext_resource type="FontFile" uid="uid://cleen4k75oev8" path="res://user_interface/fonts/font_2.ttf" id="4_twkk0"]
+[ext_resource type="Script" path="res://Label.gd" id="5_7yegq"]
 [ext_resource type="PackedScene" uid="uid://bme5e7dm8o0hq" path="res://person_ui.tscn" id="5_micwc"]
 [ext_resource type="Texture2D" uid="uid://dca64etbsfeib" path="res://particles/bubble.png" id="6_ip3m5"]
-[ext_resource type="Texture2D" uid="uid://yjipdjcp0ssv" path="res://user_interface/oxygen-bar/oxygen_bar_under.png" id="6_ttum1"]
-[ext_resource type="Texture2D" uid="uid://fprudh50ipsm" path="res://user_interface/oxygen-bar/oxygen_bar_progress.png" id="7_nwxs3"]
-[ext_resource type="Script" path="res://oxygenBar.gd" id="8_87ia2"]
-[ext_resource type="FontFile" uid="uid://b0k28w0xuxdac" path="res://user_interface/fonts/font_1.ttf" id="9_xmbcm"]
 [ext_resource type="Texture2D" uid="uid://db6l22yt8e5yf" path="res://user_interface/bg.png" id="10_pynhp"]
 [ext_resource type="PackedScene" uid="uid://bjskspmn3crka" path="res://oxygen_refill.tscn" id="12_dphwu"]
 
@@ -33,63 +32,27 @@ script = ExtResource("1_kca2i")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="personUI" parent="UI" instance=ExtResource("5_micwc")]
+[node name="personUI" parent="UI" groups=["personui"] instance=ExtResource("5_micwc")]
+unique_name_in_owner = true
 
-[node name="oxygenBar" type="TextureProgressBar" parent="UI"]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 6.0
-offset_top = 44.0
-offset_right = 86.0
-offset_bottom = 52.0
-grow_vertical = 2
-rotation = -1.5708
-mouse_filter = 2
-nine_patch_stretch = true
-stretch_margin_left = 4
-stretch_margin_right = 4
-texture_under = ExtResource("6_ttum1")
-texture_progress = ExtResource("7_nwxs3")
-script = ExtResource("8_87ia2")
+[node name="oxygenBar" parent="UI" instance=ExtResource("3_2akx3")]
 
-[node name="Label" type="Label" parent="UI/oxygenBar"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 3.0
-offset_top = -23.0
-offset_right = 43.0
-grow_vertical = 2
-rotation = 1.5708
+[node name="Label" type="Label" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0.12549, 0.0823529, 0.2, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("9_xmbcm")
-theme_override_font_sizes/font_size = 8
-text = "O"
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_twkk0")
+theme_override_font_sizes/font_size = 7
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="UI/oxygenBar"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -6.0
-offset_top = 2.0
-offset_right = 2.0
-offset_bottom = 10.0
-grow_vertical = 2
-rotation = 1.5708
-scale = Vector2(0.8, 0.8)
-theme_override_colors/font_outline_color = Color(0.12549, 0.0823529, 0.2, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("9_xmbcm")
-theme_override_font_sizes/font_size = 8
-text = "2"
-horizontal_alignment = 1
-vertical_alignment = 1
+script = ExtResource("5_7yegq")
 
 [node name="player" parent="." instance=ExtResource("1_uebi4")]
 unique_name_in_owner = true
@@ -120,8 +83,7 @@ texture = ExtResource("10_pynhp")
 metadata/_edit_lock_ = true
 
 [node name="oxygen_refill" parent="BG" groups=["oxygen_area"] instance=ExtResource("12_dphwu")]
-position = Vector2(3, 4)
-metadata/_edit_lock_ = true
+position = Vector2(3, -4)
 
 [connection signal="area_shape_entered" from="player" to="player" method="_on_area_shape_entered"]
 [connection signal="area_entered" from="BG/oxygen_refill" to="BG/oxygen_refill" method="_on_area_entered"]

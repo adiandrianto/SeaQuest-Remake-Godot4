@@ -12,25 +12,32 @@ const MIN_X = 24
 const MAX_X = 242
 const MIN_Y = 38
 const MAX_Y = 222
+
 @onready var reload_timer = $reloadTimer
 @onready var sprite = $sprite
 @onready var person_unload_timer = $personUnloadTimer
+@onready var timer = $Timer
 
 func _ready():
 	GameEvent.connect("full_crew", Callable(self, "on_full_crew"))
 	GameEvent.connect("partial_crew", Callable(self, "oxygenized"))
 	
+
 func _process(_delta):	
 	if state == "default":
 		process_movement()
 		shoot()
 		deplete_oxygen()	
+		
 	elif state == "oxygenized":
 		refill_oxygen()
-	elif state == "on_full_crew":
-		refill_oxygen()
-	
+	elif state == "full_crew":
+		if Global.total_person_saved == 0:
+			state = "oxygenized"
+			
 	print(Global.total_person_saved)
+			
+	
 func process_movement():
 	vel.x = Input.get_axis("move_left", "move_right")
 	vel.y = Input.get_axis("move_up", "move_down")
@@ -75,25 +82,14 @@ func refill_oxygen():
 func on_full_crew():
 	print("crew full")
 	state = "full_crew"
-	Global.total_person_saved -= 1
-	GameEvent.emit_signal("person_updated")
-	print(Global.total_person_saved)
-	
-	if Global.total_person_saved <= 0 :
-		state = "oxygenized"
-		
+	timer.start()
 	
 # partial_crew
 func oxygenized():
 	state = "oxygenized"
-	refill_oxygen()	
-		
 
-func _on_person_unload_timer_timeout():
-	Global.total_person_saved -= 1
-	GameEvent.emit_signal("person_updated")
-	print(Global.total_person_saved)
-	
-	if Global.total_person_saved <= 0 :
-		state = "oxygenized"
-		person_unload_timer.stop()
+func _on_timer_timeout():
+	Global.increased_points(500)
+	GameEvent.emit_signal("points_updated")
+	Global.total_person_saved = 0
+	state = "oxygenized"

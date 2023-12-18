@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccwwauisc46lk"]
+
+[ext_resource type="Texture2D" uid="uid://yjipdjcp0ssv" path="res://user_interface/oxygen-bar/oxygen_bar_under.png" id="1_4ig3b"]
+[ext_resource type="Texture2D" uid="uid://fprudh50ipsm" path="res://user_interface/oxygen-bar/oxygen_bar_progress.png" id="2_2u750"]
+[ext_resource type="Script" path="res://oxygenBar.gd" id="3_ruc1f"]
+[ext_resource type="FontFile" uid="uid://b0k28w0xuxdac" path="res://user_interface/fonts/font_1.ttf" id="4_ra68g"]
+
+[node name="oxygenBar" type="TextureProgressBar"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = 44.0
+offset_right = 86.0
+offset_bottom = 52.0
+grow_vertical = 2
+rotation = -1.5708
+mouse_filter = 2
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_right = 4
+texture_under = ExtResource("1_4ig3b")
+texture_progress = ExtResource("2_2u750")
+script = ExtResource("3_ruc1f")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -3.00002
+offset_top = 2.00003
+offset_right = 4.99998
+offset_bottom = 10.0
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+theme_override_colors/font_outline_color = Color(0.12549, 0.0823529, 0.2, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_ra68g")
+theme_override_font_sizes/font_size = 8
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 2.99997
+offset_top = -15.0
+offset_right = 43.0
+offset_bottom = 8.00002
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+theme_override_colors/font_outline_color = Color(0.12549, 0.0823529, 0.2, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_ra68g")
+theme_override_font_sizes/font_size = 8
+text = "O"
+horizontal_alignment = 1
+vertical_alignment = 1

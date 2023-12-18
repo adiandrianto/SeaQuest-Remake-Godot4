@@ -1,11 +1,18 @@
 extends Node2D
 
+@onready var animation_player = $"../AnimationPlayer"
 @export var ui_order = 1
 const EMPTY_TEXTURE = preload("res://user_interface/people-count/person_empty_ui.png")
 const FULL_TEXTURE = preload("res://user_interface/people-count/person_ui.png")
 
 func _ready():
+	#animation_player.play("default")
 	GameEvent.connect("person_updated", Callable(self, "_update"))
+	GameEvent.connect("full_crew", Callable(self, "on_full_crew"))
+
+func on_full_crew():
+	animation_player.play("unload")
+
 
 func _update():
 	if Global.total_person_saved >= ui_order:

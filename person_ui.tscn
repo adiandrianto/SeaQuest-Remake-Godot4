@@ -1,7 +1,190 @@
-[gd_scene load_steps=3 format=3 uid="uid://bme5e7dm8o0hq"]
+[gd_scene load_steps=7 format=3 uid="uid://bme5e7dm8o0hq"]
 
 [ext_resource type="Script" path="res://ui.gd" id="1_bglgm"]
 [ext_resource type="Texture2D" uid="uid://ceuk8nvkvnqlm" path="res://user_interface/people-count/person_empty_ui.png" id="2_byqk4"]
+[ext_resource type="Texture2D" uid="uid://b1g3ntbomxxmj" path="res://user_interface/people-count/person_ui.png" id="3_l1lre"]
+
+[sub_resource type="Animation" id="Animation_por7i"]
+resource_name = "unload"
+length = 2.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI7/Sprite7:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_l1lre"), ExtResource("2_byqk4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI6/Sprite6:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_l1lre"), ExtResource("2_byqk4")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI5/Sprite5:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_l1lre"), ExtResource("2_byqk4")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI4/Sprite4:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_l1lre"), ExtResource("2_byqk4")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI3/Sprite3:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_l1lre"), ExtResource("2_byqk4")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI2/Sprite2:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_l1lre"), ExtResource("2_byqk4")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("UI1/Sprite1:texture")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_l1lre"), ExtResource("2_byqk4")]
+}
+
+[sub_resource type="Animation" id="Animation_cs0mn"]
+resource_name = "default"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI1/Sprite1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI2/Sprite2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI3/Sprite3:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI4/Sprite4:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI5/Sprite5:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI6/Sprite6:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("UI7/Sprite7:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tx5tp"]
+_data = {
+"default": SubResource("Animation_cs0mn"),
+"unload": SubResource("Animation_por7i")
+}
 
 [node name="personUI" type="Node2D"]
 
@@ -10,7 +193,7 @@ script = ExtResource("1_bglgm")
 
 [node name="Sprite1" type="Sprite2D" parent="UI1"]
 position = Vector2(7, 8)
-texture = ExtResource("2_byqk4")
+texture = ExtResource("3_l1lre")
 hframes = 2
 
 [node name="UI2" type="Node2D" parent="."]
@@ -19,7 +202,7 @@ ui_order = 2
 
 [node name="Sprite2" type="Sprite2D" parent="UI2"]
 position = Vector2(7, 8)
-texture = ExtResource("2_byqk4")
+texture = ExtResource("3_l1lre")
 offset = Vector2(12, 0)
 hframes = 2
 
@@ -29,7 +212,7 @@ ui_order = 3
 
 [node name="Sprite3" type="Sprite2D" parent="UI3"]
 position = Vector2(7, 8)
-texture = ExtResource("2_byqk4")
+texture = ExtResource("3_l1lre")
 offset = Vector2(24, 0)
 hframes = 2
 
@@ -39,7 +222,7 @@ ui_order = 4
 
 [node name="Sprite4" type="Sprite2D" parent="UI4"]
 position = Vector2(7, 8)
-texture = ExtResource("2_byqk4")
+texture = ExtResource("3_l1lre")
 offset = Vector2(36, 0)
 hframes = 2
 
@@ -49,7 +232,7 @@ ui_order = 5
 
 [node name="Sprite5" type="Sprite2D" parent="UI5"]
 position = Vector2(7, 8)
-texture = ExtResource("2_byqk4")
+texture = ExtResource("3_l1lre")
 offset = Vector2(48, 0)
 hframes = 2
 
@@ -59,7 +242,7 @@ ui_order = 6
 
 [node name="Sprite6" type="Sprite2D" parent="UI6"]
 position = Vector2(7, 8)
-texture = ExtResource("2_byqk4")
+texture = ExtResource("3_l1lre")
 offset = Vector2(60, 0)
 hframes = 2
 
@@ -69,6 +252,12 @@ ui_order = 7
 
 [node name="Sprite7" type="Sprite2D" parent="UI7"]
 position = Vector2(7, 8)
-texture = ExtResource("2_byqk4")
+texture = ExtResource("3_l1lre")
 offset = Vector2(72, 0)
 hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tx5tp")
+}
+autoplay = "default"
