@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bs7q345gwb5ja"]
+[gd_scene load_steps=10 format=3 uid="uid://bs7q345gwb5ja"]
 
 [ext_resource type="Texture2D" uid="uid://bq3r4c1d52552" path="res://player/player.png" id="1_lr6lu"]
 [ext_resource type="Script" path="res://player.gd" id="2_bgflt"]
+[ext_resource type="AudioStream" uid="uid://dgp2qvjskg3ou" path="res://refill_full.wav" id="3_ljrfa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_05yfo"]
 atlas = ExtResource("1_lr6lu")
@@ -62,6 +63,11 @@ shape = SubResource("CircleShape2D_j5dj7")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.2
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ljrfa")
+volume_db = -12.0
+pitch_scale = 1.05
 
 [connection signal="timeout" from="reloadTimer" to="." method="_on_reload_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

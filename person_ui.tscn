@@ -1,96 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bme5e7dm8o0hq"]
+[gd_scene load_steps=8 format=3 uid="uid://bme5e7dm8o0hq"]
 
 [ext_resource type="Script" path="res://ui.gd" id="1_bglgm"]
 [ext_resource type="Texture2D" uid="uid://ceuk8nvkvnqlm" path="res://user_interface/people-count/person_empty_ui.png" id="2_byqk4"]
 [ext_resource type="Texture2D" uid="uid://b1g3ntbomxxmj" path="res://user_interface/people-count/person_ui.png" id="3_l1lre"]
-
-[sub_resource type="Animation" id="Animation_por7i"]
-resource_name = "unload"
-length = 2.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UI7/Sprite7:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("3_l1lre"), ExtResource("2_byqk4")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UI6/Sprite6:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("3_l1lre"), ExtResource("2_byqk4")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("UI5/Sprite5:texture")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("3_l1lre"), ExtResource("2_byqk4")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("UI4/Sprite4:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("3_l1lre"), ExtResource("2_byqk4")]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("UI3/Sprite3:texture")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("3_l1lre"), ExtResource("2_byqk4")]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("UI2/Sprite2:texture")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 1.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("3_l1lre"), ExtResource("2_byqk4")]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("UI1/Sprite1:texture")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 2.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("3_l1lre"), ExtResource("2_byqk4")]
-}
+[ext_resource type="AudioStream" uid="uid://64v0njlk3oxy" path="res://user_interface/unload.wav" id="4_e5tli"]
 
 [sub_resource type="Animation" id="Animation_cs0mn"]
 resource_name = "default"
@@ -180,6 +93,94 @@ tracks/6/keys = {
 "values": [0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_por7i"]
+resource_name = "unload"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI7/Sprite7:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_byqk4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI6/Sprite6:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_l1lre"), ExtResource("2_byqk4")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI5/Sprite5:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_l1lre"), ExtResource("2_byqk4")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI4/Sprite4:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_l1lre"), ExtResource("2_byqk4")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI3/Sprite3:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_l1lre"), ExtResource("2_byqk4")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI2/Sprite2:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_l1lre"), ExtResource("2_byqk4")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("UI1/Sprite1:texture")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_l1lre"), ExtResource("2_byqk4")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tx5tp"]
 _data = {
 "default": SubResource("Animation_cs0mn"),
@@ -261,3 +262,6 @@ libraries = {
 "": SubResource("AnimationLibrary_tx5tp")
 }
 autoplay = "default"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_e5tli")

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://global.gd"
 GameEvent="*res://game_event.gd"
+AudioManager="*res://audio_manager.gd"
 
 [display]
 
