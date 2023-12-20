@@ -26,8 +26,7 @@ var oxygenRefilledSoundPlayed = false
 func _ready():
 	GameEvent.connect("full_crew", Callable(self, "on_full_crew"))
 	GameEvent.connect("partial_crew", Callable(self, "oxygenized"))
-	GameEvent.connect("game_over", Callable(self, "game_over"))
-
+	
 func _process(_delta):	
 	if state == "default":
 		process_movement()
@@ -42,8 +41,7 @@ func _process(_delta):
 			state = "oxygenized"
 			
 	print(Global.total_person_saved)
-			
-	
+				
 func process_movement():
 	vel.x = Input.get_axis("move_left", "move_right")
 	vel.y = Input.get_axis("move_up", "move_down")
@@ -106,7 +104,3 @@ func _on_timer_timeout():
 	GameEvent.emit_signal("points_updated")
 	Global.total_person_saved = 0
 	state = "oxygenized"
-
-func game_over():
-	%gameoverScreen.visible =true
-	%scoreLabel.text = "score " + str(Global.total_points)

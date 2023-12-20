@@ -8,10 +8,10 @@
 [ext_resource type="FontFile" uid="uid://cleen4k75oev8" path="res://user_interface/fonts/font_2.ttf" id="4_twkk0"]
 [ext_resource type="Script" path="res://Label.gd" id="5_7yegq"]
 [ext_resource type="PackedScene" uid="uid://bme5e7dm8o0hq" path="res://person_ui.tscn" id="5_micwc"]
+[ext_resource type="PackedScene" uid="uid://dql1ga7fxb1o2" path="res://scenes/gameover.tscn" id="6_5qpaj"]
 [ext_resource type="Texture2D" uid="uid://dca64etbsfeib" path="res://particles/bubble.png" id="6_ip3m5"]
 [ext_resource type="Texture2D" uid="uid://db6l22yt8e5yf" path="res://user_interface/bg.png" id="10_pynhp"]
 [ext_resource type="PackedScene" uid="uid://bjskspmn3crka" path="res://oxygen_refill.tscn" id="12_dphwu"]
-[ext_resource type="FontFile" uid="uid://b0k28w0xuxdac" path="res://user_interface/fonts/font_1.ttf" id="12_o6s6m"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tkncq"]
 lifetime_randomness = 0.15
@@ -55,45 +55,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("5_7yegq")
 
-[node name="gameoverScreen" type="ColorRect" parent="UI"]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0705882, 0.12549, 0.12549, 1)
-
-[node name="gameoverLabel" type="Label" parent="UI/gameoverScreen"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -18.5
-offset_bottom = 4.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("12_o6s6m")
-text = "GAME OVER"
-horizontal_alignment = 1
-
-[node name="scoreLabel" type="Label" parent="UI/gameoverScreen"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -5.5
-offset_bottom = 17.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("12_o6s6m")
-theme_override_font_sizes/font_size = 8
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="gameover" parent="UI" instance=ExtResource("6_5qpaj")]
 
 [node name="player" parent="." instance=ExtResource("1_uebi4")]
 unique_name_in_owner = true

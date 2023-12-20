@@ -5,6 +5,7 @@ var oxygen_level = 100
 var total_points = 0
 var MIN_BBOX_X = -20
 var MAX_BBOX_X = 280
+var highscore = 0
 	
 func increased_person_saved():
 	total_person_saved += 1
