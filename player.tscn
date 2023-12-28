@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bs7q345gwb5ja"]
+[gd_scene load_steps=9 format=3 uid="uid://bs7q345gwb5ja"]
 
 [ext_resource type="Texture2D" uid="uid://bq3r4c1d52552" path="res://player/player.png" id="1_lr6lu"]
 [ext_resource type="Script" path="res://player.gd" id="2_bgflt"]
-[ext_resource type="AudioStream" uid="uid://dgp2qvjskg3ou" path="res://refill_full.wav" id="3_ljrfa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_05yfo"]
 atlas = ExtResource("1_lr6lu")
@@ -40,8 +39,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_j5dj7"]
-radius = 8.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_62lnx"]
+radius = 4.0
+height = 14.0
 
 [node name="player" type="Area2D" groups=["player"]]
 script = ExtResource("2_bgflt")
@@ -57,16 +57,16 @@ wait_time = 0.12
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
-shape = SubResource("CircleShape2D_j5dj7")
+position = Vector2(1, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_62lnx")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.2
 one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_ljrfa")
-volume_db = -12.0
+volume_db = -20.0
 pitch_scale = 1.05
 
 [connection signal="timeout" from="reloadTimer" to="." method="_on_reload_timer_timeout"]

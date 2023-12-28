@@ -8,8 +8,11 @@ const player_bullet_scene = preload("res://player_bullet.tscn")
 const SHOOT_AUDIO = preload("res://player/player_bullet/player_shoot.ogg")
 const REFILL_FULL = preload("res://refill_full.wav")
 const FULL_OXYGEN = preload("res://user_interface/oxygen-bar/full_oxygen_alert.ogg")
+const BODY_PIECES = preload("res://scenes/body_pieces.tscn")
+const BODY_PIECES_SPRITE = preload("res://player/player_pieces.png")
+const EXPLODE = preload("res://player/explode.wav")
 const BULLET_OFFSET = 7
-const OXYGEN_DEPLETED_SPEED = 20
+const OXYGEN_DEPLETED_SPEED = 10
 const OXYGEN_REFILL_SPEED = 60
 const MIN_X = 24
 const MAX_X = 242
@@ -26,21 +29,23 @@ var oxygenRefilledSoundPlayed = false
 func _ready():
 	GameEvent.connect("full_crew", Callable(self, "on_full_crew"))
 	GameEvent.connect("partial_crew", Callable(self, "oxygenized"))
+	GameEvent.connect("game_over", Callable(self, "destroyed"))
 	
 func _process(_delta):	
 	if state == "default":
 		process_movement()
 		shoot()
 		deplete_oxygen()	
+		death_with_no_oxygen()
+		GameEvent.emit_signal("pause_enemies", false)
 		
 	elif state == "oxygenized":
 		refill_oxygen()
+		GameEvent.emit_signal("pause_enemies", true)
 		
 	elif state == "full_crew":
 		if Global.total_person_saved == 0:
 			state = "oxygenized"
-			
-	print(Global.total_person_saved)
 				
 func process_movement():
 	vel.x = Input.get_axis("move_left", "move_right")
@@ -80,11 +85,13 @@ func _on_reload_timer_timeout():
 
 func refill_oxygen():
 	if not oxygenRefilledSoundPlayed:
+		audio_stream_player.stream = REFILL_FULL
 		audio_stream_player.play()
 		oxygenRefilledSoundPlayed = true
 		
 	Global.oxygen_level = move_toward(Global.oxygen_level, 100.0, OXYGEN_REFILL_SPEED * get_process_delta_time())
 	if Global.oxygen_level > 99:
+		
 		state = "default"
 		audio_stream_player.stop()
 		AudioManager.play_audio(FULL_OXYGEN)
@@ -92,6 +99,7 @@ func refill_oxygen():
 
 func on_full_crew():
 	print("crew full")
+	GameEvent.emit_signal("pause_enemies", true)
 	state = "full_crew"
 	timer.start()
 	
@@ -104,3 +112,23 @@ func _on_timer_timeout():
 	GameEvent.emit_signal("points_updated")
 	Global.total_person_saved = 0
 	state = "oxygenized"
+
+func death_with_no_oxygen():
+	if Global.oxygen_level < 1:
+		audio_stream_player.stream = EXPLODE
+		audio_stream_player.play()
+		GameEvent.emit_signal("game_over")
+		destroyed()
+	
+			
+func destroyed():
+	audio_stream_player.stream = EXPLODE
+	audio_stream_player.play()
+	for i in range(10):
+		var body_pieces_instance = BODY_PIECES.instantiate()
+		body_pieces_instance.texture = BODY_PIECES_SPRITE
+		body_pieces_instance.hframes = 10
+		body_pieces_instance.frame = i
+		get_tree().current_scene.add_child(body_pieces_instance)
+		body_pieces_instance.global_position = global_position
+	sprite.visible = false

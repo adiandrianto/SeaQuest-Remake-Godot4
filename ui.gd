@@ -10,6 +10,8 @@ func _ready():
 	#animation_player.play("default")
 	GameEvent.connect("person_updated", Callable(self, "_update"))
 	GameEvent.connect("full_crew", Callable(self, "on_full_crew"))
+	Global.total_person_saved = 0
+	GameEvent.emit_signal("person_updated")
 
 func on_full_crew():
 	animation_player.play("unload")

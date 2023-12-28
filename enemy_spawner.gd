@@ -10,6 +10,7 @@ const person_instance = preload("res://person.tscn")
 func _ready():
 	enemy_timer.wait_time = randf_range(1,3)
 	enemy_timer.start()
+	GameEvent.connect("game_over", Callable(self, "on_game_over"))
 
 func _on_timer_timeout():
 	spawn_enemy()
@@ -55,3 +56,8 @@ func spawn_person():
 	
 	if spawner_side:
 		person.flip_direction()
+		
+func on_game_over():
+	enemy_timer.stop()
+	person_timer.stop()
+	

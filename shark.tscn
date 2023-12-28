@@ -77,7 +77,6 @@ shape = SubResource("RectangleShape2D_4sc4a")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_vgeuk")
 sprite_frames = SubResource("SpriteFrames_1y38i")
-animation = &"dead"
 autoplay = "default"
 
 [node name="Timer" type="Timer" parent="."]

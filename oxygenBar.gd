@@ -1,4 +1,8 @@
-extends TextureProgressBar
+extends Node2D
+@onready var oxygen_bar = $oxygenBar
+@onready var animation_player = $AnimationPlayer
 
 func _process(delta):
-	value = Global.oxygen_level
+	oxygen_bar.value = Global.oxygen_level
+	if round(Global.oxygen_level) == 25 :
+		animation_player.play("alert")
